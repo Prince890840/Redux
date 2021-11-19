@@ -1,0 +1,63 @@
+1st - npm init --yes[initialize in Redux package.json file]
+
+2nd - add Redux as dependency in project folder
+		npm install redux
+
+3rd - create index.js file	and run cmd in terminal 
+		node index
+		
+		3 key principle
+		----------------
+1st - the state of your whole application in an object tree with a single store
+		ex. {
+				numberofcakes : 10
+			}
+			
+2nd - the only way to change the state is to emit an action,an object describing what happend.
+		-> to update the state of your app,you need to let redux know about that with an action.
+		-> not allowed to directly update the state object
+		
+		cake shop(shopkepper know about our action that is buy_cake)
+		-----------
+		{
+			type: buy_cake
+		}
+
+3rd - to specify how the state tree is transformed by action, you write pure reducers.
+	(update the state of your application)
+	Reducer - (previousState,action) => newState
+	
+	cake Shop
+	-------------
+	Reducer is shopkepper
+	
+	const reducer = (state,action) = {
+		switch(action.type){
+			case buy_cake: return{
+				numberofcakes: state.numofCakes = 2
+			}
+		}
+	}
+
+Action - plain javascript object
+	   - have a ' type ' property that indicates the type of action being performed.
+
+Reducer - how the app's state changes in response to action sent to store
+
+one store for the entire application
+
+Responsibilities - 
+	-holds application state
+	-allows access to state via getState()
+	-allows state to be updated via dispatch(action)
+	-register listner via subscribe(listner)
+	-Handle unregistering of listeners via the function returned by subscribe(listner)
+
+MiddleWare
+	use it - logging,crash reporting,performing asynchronous tasks etc
+
+	provide third party extension point between dispatching an action and the 
+		moment it reaches the reducer
+
+		follow the steps:
+			npm install redux-logger
