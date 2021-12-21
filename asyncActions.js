@@ -4,6 +4,7 @@ const applyMiddleware = redux.applyMiddleware
 const thunkMiddleware = require('redux-thunk').default
 const axios = require('axios')
 
+// step: 1 define the global state that we can use it
 const initialStates = {
     loading: false,
     users: [],
@@ -14,6 +15,7 @@ const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST'
 const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS'
 const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE'
 
+// step:2 create an action that contain type fields.
 const fetchUsersRequest = () => {
     return{
         type: FETCH_USERS_REQUEST
@@ -34,6 +36,7 @@ const fetchUsersFailure = error =>{
     }
 }
 
+// step: 3 create a reducer that contain current state + action object and return newState
 const reducer = (state = initialStates,action) =>{
     switch(action.type){
         case FETCH_USERS_REQUEST:
@@ -72,8 +75,11 @@ const fetchUsers = () =>{
     }
 }
 
+// step: 4 create a store
 const store = createStore(reducer,applyMiddleware(thunkMiddleware))
 store.subscribe(() => {console.log(store.getState())})
+
+// step: 5 only way to update the state is called store.dispatch()
 store.dispatch(fetchUsers())
 
 
