@@ -12,6 +12,7 @@ const applyMiddleware = redux.applyMiddleware
 
 const reduxLogger = require('redux-logger')
 const logger = reduxLogger.createLogger()
+// This library logs actions in developer console, giving traceable stack of user actions.
 
 console.log('From index.js')
 
