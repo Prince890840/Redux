@@ -60,4 +60,5 @@ MiddleWare
 		moment it reaches the reducer
 
 		follow the steps:
+		
 			npm install redux-logger

@@ -1,0 +1,29 @@
+Asyn Actions
+
+Fetches a list of users drom an api end point and stores it in the redux store.
+
+state = {
+	loading: true,
+	data: [],
+	error:''
+}
+
+loading - Display a loading spinner in your component
+data - List of Users
+errror - Display error to the user
+
+Actions - fetch_users_request
+		- fetch_users_success
+		- fetch_users_failure
+		
+reducers - case: 1
+				loading: true
+			case: 2
+				loading: false
+				users: data(from Api)
+			case: 3
+				loading: false
+				error: errror(from api)
+
+befor using action async install 2 packages:
+	- npm install axios redux-thunk
